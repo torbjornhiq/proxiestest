@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "A new proxyname": {
+      "matchCondition": {
+        "route": "/{*path}"
+      },
+      "backendUri": "https://postman-echo.com/{path}"
+    }
+  }
+}
