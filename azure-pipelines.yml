@@ -18,10 +18,14 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: ArchiveFiles@2
+- task: DotNetCoreCLI@2
   inputs:
-    rootFolderOrFile: proxies.json
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    command: 'build'
+    projects: '"EmptyFunctionApp\EmptyFunctionApp\EmptyFunctionApp.csproj"'
+- task: AzureFunctionApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1 (045686a6-27b2-4941-a615-4d117d53b326)'
+    appType: 'functionApp'
+    appName: 'PentaProxyTest'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
