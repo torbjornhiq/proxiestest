@@ -20,7 +20,11 @@ steps:
   inputs:
     command: 'build'
     projects: '$(System.DefaultWorkingDirectory)/EmptyFunctionApp/EmptyFunctionApp/EmptyFunctionApp.csproj'
-    outputDir: '$(Build.BinariesDirectory)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
 
 - task: ArchiveFiles@2
   inputs:
