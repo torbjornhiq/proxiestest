@@ -19,7 +19,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '"EmptyFunctionApp\EmptyFunctionApp\EmptyFunctionApp.csproj"'
+    projects: '$(System.DefaultWorkingDirectory)/EmptyFunctionApp/EmptyFunctionApp/EmptyFunctionApp.csproj'
 - task: AzureFunctionApp@1
   inputs:
     azureSubscription: 'Azure subscription 1 (045686a6-27b2-4941-a615-4d117d53b326)'
