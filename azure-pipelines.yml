@@ -17,7 +17,7 @@ variables:
   vmImageName: 'vs2017-win2016'
 
   # Working Directory
-  workingDirectory: '/'
+  workingDirectory: 'EmptyFunctionApp'
 
 stages:
 - stage: Build
@@ -30,6 +30,13 @@ stages:
       default
 
     steps:
+
+    - task: PowerShell@2
+      displayName: List Files Post Publish
+      inputs:
+        targetType: inline
+        script: Get-ChildItem
+
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
