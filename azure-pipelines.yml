@@ -20,6 +20,7 @@ steps:
   inputs:
     command: 'build'
     projects: '$(System.DefaultWorkingDirectory)/EmptyFunctionApp/EmptyFunctionApp/EmptyFunctionApp.csproj'
+    outputDir: '$(Build.BinariesDirectory)'
 
 - task: ArchiveFiles@2
   inputs:
